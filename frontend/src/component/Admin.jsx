@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
+import useIsAuthenticated from 'react-auth-kit/hooks/useIsAuthenticated';
 import { FaSearch } from 'react-icons/fa';
 
 export default function Admin() {
   const auth = useAuthUser();
+  const isAuthenticated = useIsAuthenticated();
+
   const navigate = (url) => {
     window.location.href = url;
   };
@@ -14,7 +17,9 @@ export default function Admin() {
   // ketika komponen terpasang
   // hit api
   useEffect(() => {
-    getKoleksi();
+    if (isAuthenticated) {
+      getKoleksi();
+    }
 
     async function getKoleksi() {
       try {
@@ -28,10 +33,10 @@ export default function Admin() {
 
         setKoleksi(result.karya);
       } catch (error) {
-        alert('terjadi kesalahan saat mengambil data karya');
+        alert('terjadi kesalahan saat mengambil data koleksi');
       }
     }
-  }, [auth]);
+  }, [auth, isAuthenticated]);
 
   const filterSearch = koleksi.filter((item) => {
     return (

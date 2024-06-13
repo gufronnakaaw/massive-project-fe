@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
+import useIsAuthenticated from 'react-auth-kit/hooks/useIsAuthenticated';
 import '../assets/styles/formulir.css';
 
 export default function Formulir() {
   const auth = useAuthUser();
+  const isAuthenticated = useIsAuthenticated();
 
   const [jenisKarya, setJenisKarya] = useState([]);
 
   useEffect(() => {
-    getJenisKarya();
+    if (isAuthenticated) {
+      getJenisKarya();
+    }
 
     async function getJenisKarya() {
       try {
@@ -28,7 +32,7 @@ export default function Formulir() {
         alert('terjadi kesalahan saat mengambil data karya');
       }
     }
-  }, [auth]);
+  }, [auth, isAuthenticated]);
   return (
     <>
       <div className="bg-primary w-full">

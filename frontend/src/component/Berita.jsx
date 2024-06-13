@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
+import useIsAuthenticated from 'react-auth-kit/hooks/useIsAuthenticated';
 import { Link } from 'react-router-dom';
 
 export default function App() {
   const auth = useAuthUser();
+  const isAuthenticated = useIsAuthenticated();
 
   const [berita, setBerita] = useState([]);
 
   useEffect(() => {
-    getBerita();
+    if (isAuthenticated) {
+      getBerita();
+    }
 
     async function getBerita() {
       try {
@@ -25,10 +29,10 @@ export default function App() {
 
         setBerita(result.berita);
       } catch (error) {
-        alert('terjadi kesalahan saat mengambil data karya');
+        alert('terjadi kesalahan saat mengambil data berita');
       }
     }
-  }, [auth]);
+  }, [auth, isAuthenticated]);
 
   return (
     <div className="bg-primary w-full min-h-screen px-20 pt-5 pb-[72px]">
