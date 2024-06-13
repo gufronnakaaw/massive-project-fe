@@ -1,0 +1,24 @@
+:root {
+    --pr-black: #0C0C0C;
+    --sr-black: #0F0F0F;
+    --tr-black: #131313;
+    --pr-gold: #FFD685;
+}
+
+nav {
+    background-color: var(--pr-black) !important;
+    transition: box-shadow 0.3s ease;
+}
+
+.navbar-shadow {
+    box-shadow: 0 0 7px 2px var(--pr-gold);
+}
+
+.text-navbar {
+    transition: 0.2s; 
+}
+
+.text-navbar:hover {
+    font-weight: 600;
+    transition: 0.2s;
+}

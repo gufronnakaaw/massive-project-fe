@@ -1,0 +1,11 @@
+.auth-form {
+    background-color: transparent;
+    border-bottom: solid white 1px;
+    transition: 0.3s;
+}
+
+.auth-form:focus {
+    border-bottom: solid var(--pr-gold) 1px;
+    outline: none;
+    transition: 0.3s;
+}

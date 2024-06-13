@@ -1,0 +1,19 @@
+:root {
+    --pr-black: #0C0C0C;
+    --sr-black: #0F0F0F;
+    --tr-black: #131313;
+    --pr-gold: #FFD685;
+}
+
+
+.input-form {
+    background-color: transparent;
+    border: solid white 1px;
+    transition: 0.3s;
+}
+
+.input-form:focus {
+    border: solid var(--pr-gold) 1px;
+    outline: none;
+    transition: 0.3s;
+}
